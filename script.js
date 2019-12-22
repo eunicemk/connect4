@@ -20,14 +20,26 @@ function col(colNum){
 			dropToken(r-1, colNum);
 			board[r-1][colNum] = currentPlayer%2;
 			currentPlayer++;
-			document.getElementById("player").innerHTML = "PLAYER " + ((currentPlayer%2)+1) + " TURN";
+			
+			if(currentPlayer%2 == 0){//if its player 1
+			document.getElementById('player').src = "player1.png";
+			}
+			else{//if its player 2
+			document.getElementById('player').src = "player2.png";
+			}
+			//check winner()
 			return;
 		}
 	}
 	dropToken(5, colNum);
 	board[5][colNum] = currentPlayer%2;
 	currentPlayer++;
-	document.getElementById("player").innerHTML = "PLAYER " + ((currentPlayer%2)+1) + " TURN";
+	if(currentPlayer%2 == 0){//if its player 1
+			document.getElementById('player').src = "player1.png";
+		}
+	else{//if its player 2
+		document.getElementById('player').src = "player2.png";
+	}
 	return;
 }
 
