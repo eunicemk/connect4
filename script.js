@@ -27,7 +27,7 @@ function col(colNum){
 			else{//if its player 2
 			document.getElementById('player').src = "player2.png";
 			}
-			//check winner()
+			//TODO: check winner()
 			return;
 		}
 	}
@@ -67,6 +67,10 @@ function dropToken(row, col){
 }
 
 function recolor(num){
+	if(board[0][num] != -1){ //if the whole colum is filled
+		document.getElementById("color"+num).style.backgroundImage= "url('redX.png')";
+		return;
+	}
 	if(currentPlayer%2 == 0){ //if its player 1
 		document.getElementById("color"+num).style.backgroundImage= "url('unicorn.png')";
 	}
