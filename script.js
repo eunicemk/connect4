@@ -17,7 +17,9 @@ function col(colNum){
 	}
 	for(var r=0; r<6; r++){
 		if(board[r][colNum] != -1){
+			//call the drop token to start animating the drop
 			dropToken(r-1, colNum);
+			//update the internal board
 			board[r-1][colNum] = currentPlayer%2;
 			currentPlayer++;
 			
@@ -54,19 +56,12 @@ function dropToken(row, col){
 		color = "url('Wolf.png')";
 	}
 
-	//document.getElementById("cell"+row+col).style.backgroundImage= color;
-	// "animating" the token dropping
-	//document.getElementById("cell"+0+col).style.backgroundImage=color;
-
-	/*for(var i=1; i<=row; i++){
-		//setTimeout(dropping(row, col, color), 1000);
-		document.getElementById("cell"+(i-1)+col).style.backgroundColor = "";
-		document.getElementById("cell"+i+col).style.backgroundColor = color;
-	}*/
-
+	//fall animation
 	document.getElementById("cell"+row+col).style.backgroundImage= color;
+	//change fall from location depending on where it has to land on
 	var location = (row+1)*(-67);
 	document.documentElement.style.setProperty('--fall-var', location+"px");
+	//start the animation
 	document.getElementById("cell"+row+col).classList.add('fall');
 	
 }
