@@ -54,15 +54,20 @@ function dropToken(row, col){
 		color = "url('Wolf.png')";
 	}
 
-	document.getElementById("cell"+row+col).style.backgroundImage= color;
-	/*// "animating" the token dropping
-	document.getElementById("cell"+0+col).style.backgroundImage=color;
+	//document.getElementById("cell"+row+col).style.backgroundImage= color;
+	// "animating" the token dropping
+	//document.getElementById("cell"+0+col).style.backgroundImage=color;
 
-	for(var i=1; i<=row; i++){
+	/*for(var i=1; i<=row; i++){
 		//setTimeout(dropping(row, col, color), 1000);
-		document.getElementById("cell"+(i-1)+col).style.backgroundColor = "#FFFFFF";
+		document.getElementById("cell"+(i-1)+col).style.backgroundColor = "";
 		document.getElementById("cell"+i+col).style.backgroundColor = color;
 	}*/
+
+	document.getElementById("cell"+row+col).style.backgroundImage= color;
+	var location = (row+1)*(-67);
+	document.documentElement.style.setProperty('--fall-var', location+"px");
+	document.getElementById("cell"+row+col).classList.add('fall');
 	
 }
 

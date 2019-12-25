@@ -1,7 +1,27 @@
+:root
+{
+	--fall-var: -400px;
+}
+
 #player{
 	font-size: 30px;
 	font-family: "Verdana";
 }
+
+.fall {
+    animation-name: fall-animation;
+    animation-duration: 500ms;
+}
+
+@keyframes fall-animation {
+    from {
+        transform: translateY(var(--fall-var));
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
 
 #invrow{
 	display: table;
