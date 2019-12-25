@@ -11,5 +11,4 @@ if using text editor, right click on the file and choose which text editor to vi
 Figure out who the winner is, 
 End the game if there is a winner or it is a tie, 
 Include a reset/replay button, 
-Animate token falling, 
 #/Create an AI in various levels
