@@ -7,7 +7,85 @@ var board = [[-1, -1, -1, -1, -1, -1, -1],
 
 var currentPlayer = 0;
 
+function checkWinner(row,colNum)
+{
+	//check vertical
+	var count = 0;
+	for(var i = 0; i < 4; i++)
+		{
+			if(board[row+i][colNum] == (currentPlayer+1)%2)
+				count++;
+			else
+				break;
+		}
+	if(count >= 4)
+		return true;
+	else
+		count = 0;
 
+	//check horizontal
+	for(var i = 0; i < 4; i++)
+		{
+			if(board[row][colNum-i] == (currentPlayer+1)%2)
+				count++;
+			else
+				break;
+		}
+
+	for(var i = 0; i < 4; i++)
+		{
+			if(board[row][colNum+i] == (currentPlayer+1)%2)
+				count++;
+			else
+				break;
+		}
+	if(count >= 4)
+		return true;
+	else
+		count = 0;
+
+	//check northeast pointing diagonal
+	for(var i = 0; i < 4; i++)
+		{
+			if(board[row-i][colNum-i] == (currentPlayer+1)%2)
+				count++;
+			else
+				break;
+		}
+
+	for(var i = 0; i < 4; i++)
+		{
+			if(board[row+i][colNum+i] == (currentPlayer+1)%2)
+				count++;
+			else
+				break;
+		}
+	if(count >= 4)
+		return true;
+	else
+		count = 0;
+
+	//check northwest pointing diagonal
+	for(var i = 0; i < 4; i++)
+		{
+			if(board[row+i][colNum-i] == (currentPlayer+1)%2)
+				count++;
+			else
+				break;
+		}
+
+	for(var i = 0; i < 4; i++)
+		{
+			if(board[row-i][colNum+i] == (currentPlayer+1)%2)
+				count++;
+			else
+				break;
+		}
+	if(count >= 4)
+		return true;
+	else
+		return false;
+}
 
 function col(colNum){
 	whiten(colNum);
@@ -25,11 +103,13 @@ function col(colNum){
 			
 			if(currentPlayer%2 == 0){//if its player 1
 			document.getElementById('player').src = "player1.png";
-			}
+			}				
 			else{//if its player 2
 			document.getElementById('player').src = "player2.png";
 			}
-			//TODO: check winner()
+			if(checkWinner(r-1,colNum))
+				window.alert('Player ' + ((currentPlayer%2)) + ' has won');
+
 			return;
 		}
 	}
