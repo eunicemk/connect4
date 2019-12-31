@@ -11,9 +11,10 @@ function checkWinner(row,colNum)
 {
 	//check vertical
 	var count = 0;
+	console.log(board);
 	for(var i = 0; i < 4; i++)
 		{
-			if(board[row+i][colNum] == (currentPlayer+1)%2)
+			if(row+i < 6 && board[row+i][colNum] == (currentPlayer+1)%2)
 				count++;
 			else
 				break;
@@ -26,15 +27,14 @@ function checkWinner(row,colNum)
 	//check horizontal
 	for(var i = 0; i < 4; i++)
 		{
-			if(board[row][colNum-i] == (currentPlayer+1)%2)
+			if(colNum-i >= 0 && board[row][colNum-i] == (currentPlayer+1)%2)
 				count++;
 			else
 				break;
 		}
-
 	for(var i = 0; i < 4; i++)
 		{
-			if(board[row][colNum+i] == (currentPlayer+1)%2)
+			if(colNum+i < 7 && board[row][colNum+i] == (currentPlayer+1)%2)
 				count++;
 			else
 				break;
@@ -47,15 +47,15 @@ function checkWinner(row,colNum)
 	//check northeast pointing diagonal
 	for(var i = 0; i < 4; i++)
 		{
-			if(board[row-i][colNum-i] == (currentPlayer+1)%2)
+			if(row-i>=0 && colNum+i>=0 && board[row-i][colNum+i] == (currentPlayer+1)%2)
 				count++;
 			else
 				break;
 		}
 
-	for(var i = 0; i < 4; i++)
+	for(var i = 1; i < 4; i++)
 		{
-			if(board[row+i][colNum+i] == (currentPlayer+1)%2)
+			if(row+i<6 && colNum-i>=0 && board[row+i][colNum-i] == (currentPlayer+1)%2)
 				count++;
 			else
 				break;
@@ -68,15 +68,15 @@ function checkWinner(row,colNum)
 	//check northwest pointing diagonal
 	for(var i = 0; i < 4; i++)
 		{
-			if(board[row+i][colNum-i] == (currentPlayer+1)%2)
+			if(row+i<6 && colNum+i<7 && board[row+i][colNum+i] == (currentPlayer+1)%2)
 				count++;
 			else
 				break;
 		}
 
-	for(var i = 0; i < 4; i++)
+	for(var i = 1; i < 4; i++)
 		{
-			if(board[row-i][colNum+i] == (currentPlayer+1)%2)
+			if(row-i >=0 && colNum-i>=0 && board[row-i][colNum-i] == (currentPlayer+1)%2)
 				count++;
 			else
 				break;
