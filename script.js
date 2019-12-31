@@ -108,9 +108,22 @@ function col(colNum){
 			document.getElementById('player').src = "player2.png";
 			}
 			if(checkWinner(r-1,colNum)){
+				if(currentPlayer%2 == 1){
+					document.getElementById('restartPic').src = "P1Win.png";
+				}
+				else{
+					document.getElementById('restartPic').src = "P2Win.png";
+				}
         		document.getElementById('restartOverlay').style.display = 'block';
 			}
-
+			for(var x = 0; x<7; x++){
+				if(board[0][x] == -1)
+					return;
+			}
+			//TIE GAME
+			document.getElementById('restartPic').src = "playAgain.png";
+			document.getElementById('restartOverlay').style.display = 'block';
+        		
 			return;
 		}
 	}
@@ -119,11 +132,17 @@ function col(colNum){
 	currentPlayer++;
 	if(currentPlayer%2 == 0){//if its player 1
 			document.getElementById('player').src = "player1.png";
-		}
+	}
 	else{//if its player 2
 		document.getElementById('player').src = "player2.png";
 	}
 	if(checkWinner(r-1,colNum)){
+		if(currentPlayer%2 == 1){
+			document.getElementById('restartPic').src = "P1Win.png";
+		}
+		else{
+			document.getElementById('restartPic').src = "P2Win.png";
+		}
 		document.getElementById('restartOverlay').style.display = 'block';
 	}
 	return;
