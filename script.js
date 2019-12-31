@@ -188,6 +188,28 @@ function restartGame(){
 	document.getElementById('restartOverlay').style.display = 'none';
 }
 
+function restartHover(btn){
+	var name;
+	if(btn == "restart"){
+		name = "yesHover.png"
+	}
+	else{
+		name = "noHover.png"
+	}
+	document.getElementById(btn).src = name;
+}
+
+function resetHover(btn){
+	var name;
+	if(btn == "restart"){
+		name = "yesButton.png"
+	}
+	else{
+		name = "noButton.png"
+	}
+	document.getElementById(btn).src = name;
+}
+
 
 
 

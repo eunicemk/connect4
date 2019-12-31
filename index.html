@@ -140,8 +140,12 @@
 			<div class = "imageCont">
 				<img src = "PlayAgain.png">
 				<div class = "buttons" style="text-align:center;">
-					<button id="restart" onclick = "restartGame()">yes</button>
-					<button id="quitGame" onclick = "restartGame()">no</button>
+					<div class = "button" onclick = "restartGame()" onmouseover= "restartHover('restart')" onmouseout = "resetHover('restart')">
+						<img id = "restart" src = "yesButton.png" width = "100">
+					</div>
+					<div class = "button"  onclick = "restartGame()" onmouseover= "restartHover('quitGame')" onmouseout = "resetHover('quitGame')">
+						<img id = "quitGame" src = "noButton.png" width = "100">
+					</div>
 				</div>
 			</div>
 		</div>
