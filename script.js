@@ -195,16 +195,18 @@ function restartGame(){
 			 [-1, -1, -1, -1, -1, -1, -1],		// -1 if nothing is in board
 			 [-1, -1, -1, -1, -1, -1, -1],		// 0 if player 1 put something there
 			 [-1, -1, -1, -1, -1, -1, -1]];
-	//TODO: ALLOW WINNER TO START THE GAME
+	//WINNER STARTS THE GAME
+	currentPlayer--;
 
 	for(var row = 0; row<6; row++){
 		for(var col = 0; col<7; col++){
+			document.getElementById("cell"+row+col).classList.remove('fall');
 			document.getElementById("cell"+row+col).style.backgroundImage= "";
-			//document.getElementById("cell"+row+col).remove("fall");
 		}
 	}
 
 	document.getElementById('restartOverlay').style.display = 'none';
+
 }
 
 function restartHover(btn){
