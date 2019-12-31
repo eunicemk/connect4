@@ -60,6 +60,30 @@
 	margin: 20px auto;
 }
 
+#restartOverlay{
+	background-image: "PlayAgain.png"
+	width: 457px; /*width of the grid*/
+	height: 402px; /*height of grid*/
+	position: absolute;
+	bottom: 0;
+	left:0;
+	margin: 20px auto;
+}
+
+.imageCont{
+	width: 457px;
+	height: 218px;
+	position: relative;
+}
+
+.buttons{
+	position: absolute;
+	left: 50%;
+  	margin-left: -30px;
+  	top: 75%;
+  	
+}
+
 img{
 	max-width: 100%;
 	max-height: 100%;
@@ -77,6 +101,7 @@ img{
 	border: 1px ; /*literally the border*/
 
 }
+
 .row {
   display: table-row;
 }

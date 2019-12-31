@@ -32,7 +32,7 @@ function checkWinner(row,colNum)
 			else
 				break;
 		}
-	for(var i = 0; i < 4; i++)
+	for(var i = 1; i < 4; i++)
 		{
 			if(colNum+i < 7 && board[row][colNum+i] == (currentPlayer+1)%2)
 				count++;
@@ -107,8 +107,9 @@ function col(colNum){
 			else{//if its player 2
 			document.getElementById('player').src = "player2.png";
 			}
-			if(checkWinner(r-1,colNum))
-				window.alert('Player ' + ((currentPlayer%2)) + ' has won');
+			if(checkWinner(r-1,colNum)){
+        		document.getElementById('restartOverlay').style.display = 'block';
+			}
 
 			return;
 		}
@@ -121,6 +122,9 @@ function col(colNum){
 		}
 	else{//if its player 2
 		document.getElementById('player').src = "player2.png";
+	}
+	if(checkWinner(r-1,colNum)){
+		document.getElementById('restartOverlay').style.display = 'block';
 	}
 	return;
 }
@@ -164,6 +168,25 @@ function whiten(num){
 	document.getElementById("color"+num).style.backgroundColor = "transparent";
 }
 
+
+function restartGame(){
+	board = [[-1, -1, -1, -1, -1, -1, -1],
+			 [-1, -1, -1, -1, -1, -1, -1],
+			 [-1, -1, -1, -1, -1, -1, -1],
+			 [-1, -1, -1, -1, -1, -1, -1],		// -1 if nothing is in board
+			 [-1, -1, -1, -1, -1, -1, -1],		// 0 if player 1 put something there
+			 [-1, -1, -1, -1, -1, -1, -1]];
+	//TODO: ALLOW WINNER TO START THE GAME
+
+	for(var row = 0; row<6; row++){
+		for(var col = 0; col<7; col++){
+			document.getElementById("cell"+row+col).style.backgroundImage= "";
+			//document.getElementById("cell"+row+col).remove("fall");
+		}
+	}
+
+	document.getElementById('restartOverlay').style.display = 'none';
+}
 
 
 
