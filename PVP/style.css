@@ -1,0 +1,139 @@
+:root
+{
+	--fall-var: -400px;
+}
+
+#scoreAndPlayer{
+	display: table;
+	margin: auto;
+}
+
+.pScoreVal{
+	font-size: 30px;
+	font-family: "Verdana";
+}
+
+.score{
+	float: left;
+}
+
+.fall {
+    animation-name: fall-animation;
+    animation-duration: 500ms;
+}
+
+@keyframes fall-animation {
+    from {
+        transform: translateY(var(--fall-var));
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+
+#invrow{
+	display: table;
+	margin: auto;
+	width: 415px;
+	height: 60px;
+	padding: 10px;
+}
+
+#boardContainer {
+  	margin: auto; /*space around the grid is 20px on all sides*/
+	/*display: table; to make a 2d table of spaces for the tokens to show*/
+	width: 437px; /*width of the grid*/
+	height: 382px; /*height of grid*/
+	padding: 10px;  /*all cells in grid are pushed 10px from border of board*/
+  	position: relative;
+}
+
+
+#grid {
+	/*margin: 20px auto; /*space around the grid is 20px on all sides*/
+	display: table; /*to make a 2d table of spaces for the tokens to show*/
+	width: 415px; /*width of the grid*/
+	height: 360px; /*height of grid*/
+	padding: 10px;  /*all cells in grid are pushed 10px from border of board*/
+	background: transparent; /*color of board*/ 
+	border: 1px ; /*literally the border*/
+}
+
+.boardimage{
+	width: 457px; /*width of the grid*/
+	height: 402px; /*height of grid*/
+	position: absolute;
+	bottom: 0;
+	left:0;
+	margin: 20px auto;
+}
+
+#restartOverlay{
+	background-image: "PVPImages/PlayAgain.png"
+	width: 457px; /*width of the grid*/
+	height: 402px; /*height of grid*/
+	position: absolute;
+	bottom: 0;
+	left:0;
+	margin: 20px auto;
+}
+
+.imageCont{
+	width: 457px;
+	height: 218px;
+	position: relative;
+}
+
+.buttons{
+	position: absolute;
+	left: 50%;
+  	margin-left: -90px;
+  	top: 75%;
+  	
+}
+
+.button{
+	float: left;
+}
+
+img{
+	max-width: 100%;
+	max-height: 100%;
+}
+
+#gridOver {
+	/*margin: 20px auto; /*space around the grid is 20px on all sides*/
+	display: table; /*to make a 2d table of spaces for the tokens to show*/
+	position: absolute;
+	bottom:0;
+	width: 415px; /*width of the grid*/
+	height: 360px; /*height of grid*/
+	padding: 10px;  /*all cells in grid are pushed 10px from border of board*/
+	background: transparent; /*color of board*/ 
+	border: 1px ; /*literally the border*/
+
+}
+
+.row {
+  display: table-row;
+}
+
+.cell {
+	display: table-cell; /*each cell element is part of grid*/
+	background-color: transparent; /*each cell starts off as white*/
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	margin: 2px;
+	background-size: cover;
+}
+
+.slot {
+	display: table-cell; /*each cell element is part of grid*/
+	background-color:transparent; /*each cell starts off as white*/
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	margin: 2px;
+}
