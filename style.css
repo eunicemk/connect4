@@ -3,9 +3,18 @@
 	--fall-var: -400px;
 }
 
-#player{
+#scoreAndPlayer{
+	display: table;
+	margin: auto;
+}
+
+.pScoreVal{
 	font-size: 30px;
 	font-family: "Verdana";
+}
+
+.score{
+	float: left;
 }
 
 .fall {
@@ -25,14 +34,14 @@
 
 #invrow{
 	display: table;
-	margin: 20px auto;
+	margin: auto;
 	width: 415px;
 	height: 60px;
 	padding: 10px;
 }
 
 #boardContainer {
-  	margin: 20px auto; /*space around the grid is 20px on all sides*/
+  	margin: auto; /*space around the grid is 20px on all sides*/
 	/*display: table; to make a 2d table of spaces for the tokens to show*/
 	width: 437px; /*width of the grid*/
 	height: 382px; /*height of grid*/

@@ -6,6 +6,8 @@ var board = [[-1, -1, -1, -1, -1, -1, -1],
 			 [-1, -1, -1, -1, -1, -1, -1]]; 	// 1 if player 2 put something there
 
 var currentPlayer = 0;
+var player1score = 0;
+var player2score = 0;
 
 function checkWinner(row,colNum)
 {
@@ -110,9 +112,13 @@ function col(colNum){
 			if(checkWinner(r-1,colNum)){
 				if(currentPlayer%2 == 1){
 					document.getElementById('restartPic').src = "P1Win.png";
+					player1score++;
+					document.getElementById('p1scoreVal').innerHTML = player1score;
 				}
 				else{
 					document.getElementById('restartPic').src = "P2Win.png";
+					player2score++;
+					document.getElementById('p2scoreVal').innerHTML = player2score;
 				}
         		document.getElementById('restartOverlay').style.display = 'block';
 			}
@@ -139,9 +145,13 @@ function col(colNum){
 	if(checkWinner(r-1,colNum)){
 		if(currentPlayer%2 == 1){
 			document.getElementById('restartPic').src = "P1Win.png";
+			player1score++;
+			document.getElementById('p1scoreVal').innerHTML = player1score;
 		}
 		else{
 			document.getElementById('restartPic').src = "P2Win.png";
+			player2score++;
+			document.getElementById('p2scoreVal').innerHTML = player2score;
 		}
 		document.getElementById('restartOverlay').style.display = 'block';
 	}
@@ -195,7 +205,8 @@ function restartGame(){
 			 [-1, -1, -1, -1, -1, -1, -1],		// -1 if nothing is in board
 			 [-1, -1, -1, -1, -1, -1, -1],		// 0 if player 1 put something there
 			 [-1, -1, -1, -1, -1, -1, -1]];
-	//WINNER STARTS THE GAME
+	//TODO: WINNER STARTS THE GAME
+	//TODO: reset scores if player presses no!
 	currentPlayer--;
 
 	for(var row = 0; row<6; row++){
