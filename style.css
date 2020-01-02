@@ -1,1 +1,9 @@
-.stuff{}
+#titleimg{
+	display: table;
+	margin: 20px auto;
+}
+
+.buttonContainer{
+	display: table;
+	margin: 10px auto;
+}
