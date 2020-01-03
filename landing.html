@@ -6,17 +6,15 @@
     <title>Connect Four</title> <!--text that shows up on tab-->
     <link href="style.css" rel="stylesheet" type="text/css" /> <!--connects the style sheet-->
   </head>
-
-  <body bgcolor="BAE7C9">
     <div class = "title"> <!--Connect Four Title-->
       <img id = "titleimg" src = "LandingImages/placeholder.png" width = "315">
     </div>
     <div class = "buttonContainer"><!--Holds Two buttons-->
-      <div class = "button" id="pvp" onclick = "location.href='PvP/pvp.html'">
-      	<img id = "pvpbtn" src = "LandingImages/placeholder.png" width = "100"> <!--pvp button-->
+      <div class = "button" id="pvp" onclick = "location.href='PvP/pvp.html'" onmouseover= "restartHover('pvpbtn')" onmouseout = "resetHover('pvpbtn')">
+      	<img id = "pvpbtn" src = "LandingImages/pvp.png" width = "400" height="175"> <!--pvp button-->
       </div>
-      <div class = "button" id="pve" onclick = "">
-        <img id = "pvebtn" src = "LandingImages/placeholder.png" width = "100"><!--pve button-->
+      <div class = "button" id="pve" onmouseover= "restartHover('pvebtn')" onmouseout = "resetHover('pvebtn')">
+        <img id = "pvebtn" src = "LandingImages/pvAI.png" width = "400" height="175"><!--pve button-->
       </div>
     </div>
   <script src="script.js"></script>

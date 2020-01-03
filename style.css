@@ -7,3 +7,11 @@
 	display: table;
 	margin: 10px auto;
 }
+
+
+body {
+	background-image: url('LandingImages/main.png');
+    background-size: auto auto;
+
+	background-position: auto;
+}
