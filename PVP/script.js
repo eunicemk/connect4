@@ -112,12 +112,14 @@ function col(colNum){
 			if(checkWinner(r-1,colNum)){
 				if(currentPlayer%2 == 1){
 					document.getElementById('restartPic').src = "PVPImages/P1Win.png";
+					document.getElementById('player').src = "PVPImages/player1.png";
 					player1score++;
 					document.getElementById('p1scoreVal').innerHTML = player1score;
 				}
 				else{
 					document.getElementById('restartPic').src = "PVPImages/P2Win.png";
 					player2score++;
+					document.getElementById('player').src = "PVPImages/player2.png";
 					document.getElementById('p2scoreVal').innerHTML = player2score;
 				}
         		document.getElementById('restartOverlay').style.display = 'block';
