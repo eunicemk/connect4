@@ -4,7 +4,7 @@ function restartHover(btn){
 		name = "LandingImages/pvphover.png"
 	}
 	else{
-		name = "LandingImages/pvAIhover.png"
+		name = "LandingImages/pvAIh.png"
 	}
 	document.getElementById(btn).src = name;
 }
