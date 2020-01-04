@@ -9,6 +9,8 @@ var currentPlayer = 0;
 var playerscore = 0;
 var aiscore = 0;
 
+var AIWent = false; //program knows the AI went or not, calls AI for turn when it hasnt gone (false)
+
 var playerToken;
 var playerBanner;
 var playerScoreImg;
@@ -19,6 +21,11 @@ var aiWinScreen = "../pvp/PVPImages/P2Win.png"; // TODO: fill in url or src
 var playerWinScreen = "../pvp/PVPImages/P1Win.png"; // TODO: fill in url or src
 var tieScreen = "../pvp/PVPImages/playAgain.png"; // TODO: fill in url or src
 
+function aiturn()
+{
+	col(1)
+	return;
+}
 
 
 function checkWinner(row,colNum)
@@ -136,6 +143,13 @@ function col(colNum){
 				}
         		document.getElementById('restartOverlay').style.display = 'block';
 			}
+			if(!(AIWent)){
+				AIWent = true;
+				aiturn();
+			}
+			else
+				AIWent = false;
+
 			for(var x = 0; x<7; x++){
 				if(board[0][x] == -1)
 					return;
@@ -169,6 +183,12 @@ function col(colNum){
 		}
 		document.getElementById('restartOverlay').style.display = 'block';
 	}
+	if(!(AIWent)){
+		AIWent = true;
+		aiturn();
+	}
+	else
+		AIWent =false;
 	return;
 }
 
