@@ -21,12 +21,16 @@ var aiWinScreen = "../pvp/PVPImages/P2Win.png"; // TODO: fill in url or src
 var playerWinScreen = "../pvp/PVPImages/P1Win.png"; // TODO: fill in url or src
 var tieScreen = "../pvp/PVPImages/playAgain.png"; // TODO: fill in url or src
 
+function sleep(miliseconds) {
+   var currentTime = new Date().getTime();
 
-function Possible(BOARDC[], )
+   while (currentTime + miliseconds >= new Date().getTime()) {
+   }
+}
+
 function aiturn()
 {
-	var boardcopy = board;
-	var 
+	col(0);
 	return;
 }
 
@@ -38,7 +42,7 @@ function checkWinner(row,colNum)
 	console.log(board);
 	for(var i = 0; i < 4; i++)
 		{
-			if(row+i < 6 && board[row+i][colNum] == (currentPlayer+1)%2)
+			if(row+i < 6 && board[row+i][colNum] == (currentPlayer)%2)
 				count++;
 			else
 				break;
@@ -51,14 +55,14 @@ function checkWinner(row,colNum)
 	//check horizontal
 	for(var i = 0; i < 4; i++)
 		{
-			if(colNum-i >= 0 && board[row][colNum-i] == (currentPlayer+1)%2)
+			if(colNum-i >= 0 && board[row][colNum-i] == (currentPlayer)%2)
 				count++;
 			else
 				break;
 		}
 	for(var i = 1; i < 4; i++)
 		{
-			if(colNum+i < 7 && board[row][colNum+i] == (currentPlayer+1)%2)
+			if(colNum+i < 7 && board[row][colNum+i] == (currentPlayer)%2)
 				count++;
 			else
 				break;
@@ -71,7 +75,7 @@ function checkWinner(row,colNum)
 	//check northeast pointing diagonal
 	for(var i = 0; i < 4; i++)
 		{
-			if(row-i>=0 && colNum+i>=0 && board[row-i][colNum+i] == (currentPlayer+1)%2)
+			if(row-i>=0 && colNum+i>=0 && board[row-i][colNum+i] == (currentPlayer)%2)
 				count++;
 			else
 				break;
@@ -79,7 +83,7 @@ function checkWinner(row,colNum)
 
 	for(var i = 1; i < 4; i++)
 		{
-			if(row+i<6 && colNum-i>=0 && board[row+i][colNum-i] == (currentPlayer+1)%2)
+			if(row+i<6 && colNum-i>=0 && board[row+i][colNum-i] == (currentPlayer)%2)
 				count++;
 			else
 				break;
@@ -92,7 +96,7 @@ function checkWinner(row,colNum)
 	//check northwest pointing diagonal
 	for(var i = 0; i < 4; i++)
 		{
-			if(row+i<6 && colNum+i<7 && board[row+i][colNum+i] == (currentPlayer+1)%2)
+			if(row+i<6 && colNum+i<7 && board[row+i][colNum+i] == (currentPlayer)%2)
 				count++;
 			else
 				break;
@@ -100,7 +104,7 @@ function checkWinner(row,colNum)
 
 	for(var i = 1; i < 4; i++)
 		{
-			if(row-i >=0 && colNum-i>=0 && board[row-i][colNum-i] == (currentPlayer+1)%2)
+			if(row-i >=0 && colNum-i>=0 && board[row-i][colNum-i] == (currentPlayer)%2)
 				count++;
 			else
 				break;
@@ -111,28 +115,25 @@ function checkWinner(row,colNum)
 		return false;
 }
 
+function turn(colNum){
+
+}
+
 function col(colNum){
 	whiten(colNum);
-	if(board[0][colNum] != -1){ //if the whole colum is filled
+	if(board[0][colNum] != -1){ //if the whole column is filled
 		//TODO!!
 		return;
 	}
-	for(var r=0; r<6; r++){
-		if(board[r][colNum] != -1){
+	for(var r=1; r<7; r++){
+		if(r == 6 || board[r][colNum] != -1){
 			//call the drop token to start animating the drop
 			dropToken(r-1, colNum);
 			//update the internal board
 			board[r-1][colNum] = currentPlayer%2;
-			currentPlayer++;
 			
-			if(currentPlayer%2 == 0){//if its player 1
-			document.getElementById('player').src = playerBanner;
-			}				
-			else{//if its ai
-			document.getElementById('player').src = aiBanner;
-			}
 			if(checkWinner(r-1,colNum)){
-				if(currentPlayer%2 == 1){
+				if((currentPlayer+1)%2 == 1){
 					document.getElementById('restartPic').src = playerWinScreen;
 					document.getElementById('player').src = playerBanner;
 					playerscore++;
@@ -144,16 +145,22 @@ function col(colNum){
 					document.getElementById('player').src = aiBanner;
 					document.getElementById('p2scoreVal').innerHTML = aiscore;
 				}
-        		document.getElementById('restartOverlay').style.display = 'block';
+				document.getElementById('restartOverlay').style.display = 'block';
+				return;
 			}
-			if(!(AIWent)){
-				AIWent = true;
-				aiturn();
-			}
-			else
-				AIWent = false;
 
-			for(var x = 0; x<7; x++){
+			if((currentPlayer+1)%2 == 0){//if its player 1
+				document.getElementById('player').src = playerBanner;
+			}				
+			else{//if its ai
+				document.getElementById('player').src = aiBanner;
+				setTimeout(aiturn, 750);
+			  	disableBtns();
+			}
+
+			currentPlayer++;
+
+			for(var x = 0; x<7; x++){ //checking if tie game
 				if(board[0][x] == -1)
 					return;
 			}
@@ -164,36 +171,9 @@ function col(colNum){
 			return;
 		}
 	}
-	dropToken(5, colNum);
-	board[5][colNum] = currentPlayer%2;
-	currentPlayer++;
-	if(currentPlayer%2 == 0){//if its player 1
-			document.getElementById('player').src = playerBanner;
-	}
-	else{//if its player 2
-		document.getElementById('player').src = aiBanner;
-	}
-	if(checkWinner(r-1,colNum)){
-		if(currentPlayer%2 == 1){
-			document.getElementById('restartPic').src = playerWinScreen;
-			playerscore++;
-			document.getElementById('p1scoreVal').innerHTML = playerscore;
-		}
-		else{
-			document.getElementById('restartPic').src = aiWinScreen;
-			aiscore++;
-			document.getElementById('p2scoreVal').innerHTML = aiscore;
-		}
-		document.getElementById('restartOverlay').style.display = 'block';
-	}
-	if(!(AIWent)){
-		AIWent = true;
-		aiturn();
-	}
-	else
-		AIWent =false;
 	return;
 }
+
 
 
 
@@ -213,7 +193,6 @@ function dropToken(row, col){
 	document.documentElement.style.setProperty('--fall-var', location+"px");
 	//start the animation
 	document.getElementById("cell"+row+col).classList.add('fall');
-	
 }
 
 function recolor(num){
@@ -225,7 +204,7 @@ function recolor(num){
 		document.getElementById("color"+num).style.backgroundImage= playerToken;
 	}
 	else{ //if its player 2
-		document.getElementById("color"+num).style.backgroundImage = aiToken;
+		document.getElementById("color"+num).style.backgroundImage = "";
 	}
 }
 
@@ -244,7 +223,7 @@ function restartGame(){
 			 [-1, -1, -1, -1, -1, -1, -1]];
 	//TODO: WINNER STARTS THE GAME
 	//TODO: reset scores if player presses no!
-	currentPlayer--;
+	currentPlayer=0;
 
 	for(var row = 0; row<6; row++){
 		for(var col = 0; col<7; col++){
@@ -296,7 +275,11 @@ function initializeGame(playernum){
 }
 
 
+function disableBtns() {
+	document.getElementById("boardContainer").style.pointerEvents = "none";
+    var timer = setTimeout(function(){enableBtns()},750);
+}
 
-
-
-
+function enableBtns(){
+    document.getElementById("boardContainer").style.pointerEvents = "auto";
+}
