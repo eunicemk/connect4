@@ -21,9 +21,12 @@ var aiWinScreen = "../pvp/PVPImages/P2Win.png"; // TODO: fill in url or src
 var playerWinScreen = "../pvp/PVPImages/P1Win.png"; // TODO: fill in url or src
 var tieScreen = "../pvp/PVPImages/playAgain.png"; // TODO: fill in url or src
 
+
+function Possible(BOARDC[], )
 function aiturn()
 {
-	col(1)
+	var boardcopy = board;
+	var 
 	return;
 }
 
